@@ -10,7 +10,7 @@ const contactsFormSchema = Yup.object().shape({
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required field'),
-  number: Yup.string()
+  phone: Yup.string()
     .matches(
       /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/,
       'Please, enter only digits in format of "123-123-1234"'
@@ -41,7 +41,7 @@ export const ContactForm = () => {
         dispatch(
           addContact({
             name: values.name,
-            phone: values.number,
+            phone: values.phone,
           })
         );
 
@@ -53,9 +53,9 @@ export const ContactForm = () => {
         <Field id="name" name="name" />
         <ErrorMessage name="name" component={'span'}></ErrorMessage>
 
-        <label htmlFor="number">Number</label>
-        <Field id="number" name="number" type="tel" />
-        <ErrorMessage name="number" component={'span'}></ErrorMessage>
+        <label htmlFor="phone">Number</label>
+        <Field id="phone" name="phone" type="tel" />
+        <ErrorMessage name="phone" component={'span'}></ErrorMessage>
 
         <Button type="submit">Add contact</Button>
       </Form>
